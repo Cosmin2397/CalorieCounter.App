@@ -1,0 +1,46 @@
+﻿@page
+@model CalorieCounter.Pages.Foods.GetSearchedFoodModel
+
+
+<h4>Search for Food</h4>
+<form method="get">
+    <div class="input-group"> 
+        <input class="form-control" asp-for="SearchFood"/>
+    </div>
+    <div class="input-group-append" style="padding:10px">
+                <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>KCal/100g</th>
+            <th>Protein</th>
+            <th>Carbs</th>
+            <th>Fats</th>
+            <th>Fibers</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var food in Model.FoodsList)
+        {
+            <tr>
+                <th>@food.Id</th>
+                <th>@food.Name</th>
+                <th>@food.Calories kcal</th>
+                <th>@food.Protein g</th>
+                <th>@food.Carbo g</th>
+                <th>@food.Fats g</th>
+                <th>@food.Fibers g</th>
+                <th>
+                    <a class="btn btn-secondary" asp-page="/FoodsToAdd/Create" asp-route-id="@food.Id">Add food</a>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@food.Id">Details</a> |
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

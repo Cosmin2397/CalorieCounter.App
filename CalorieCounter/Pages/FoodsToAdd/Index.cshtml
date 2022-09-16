@@ -1,0 +1,42 @@
+﻿@page
+@model CalorieCounter.Pages.FoodsToAdd.IndexModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Servings</th>
+            <th>Serving Weight</th>
+            <th>Total Weight</th>
+            <th>Total Kcal</th>
+            <th>Total Carbs</th>
+            <th>Total Protein</th>
+            <th>Total Fats</th>
+            <th>Total Fibers</th>
+            <th>Meal</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var food in Model.FoodsToAdd)
+        {
+            <tr>
+                <th>@food.Id</th>
+                <th>@food.Food.Name</th>
+                <th>@food.Servings</th>
+                <th>@food.ServingWeight g</th>
+                <th>@food.TotalWeight g</th>
+                <th>@food.TotalKcalFood kcal</th>
+                <th>@food.TotalCarbsFood g</th>
+                <th>@food.TotalProteinFood g</th>
+                <th>@food.TotalFatsFood g</th>
+                <th>@food.TotalFibersFood g</th>
+                <th>@food.MealTypeId.ToString()</th>
+                <th>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@food.Id">Details</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

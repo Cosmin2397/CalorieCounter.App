@@ -1,0 +1,38 @@
+﻿@page
+@model CalorieCounter.Pages.FoodsToAdd.DetailsModel
+
+
+<div class="card text-center h-100">
+    <div class="card-header">
+        Food Values
+    </div>
+    <div class="card-body">
+        <p class="small">
+            Name: @Model.FoodToAdd.Food.Name
+        </p>
+        <p class="small">
+            Servings: @Model.FoodToAdd.Servings
+        </p>
+        <p class="small">
+            Serving Weight: @Model.FoodToAdd.ServingWeight g
+        </p>
+        <p class="small">
+            Weight: @Model.FoodToAdd.TotalWeight g
+        </p>
+        <p class="small">
+            Protein: @Model.FoodToAdd.TotalProteinFood g
+        </p>
+        <p class="small">
+            Carbs: @Model.FoodToAdd.TotalCarbsFood g
+        </p>
+        <p class="small">
+            Fats: @Model.FoodToAdd.TotalFatsFood g
+        </p>
+        <p class="small">
+            Fibers: @Model.FoodToAdd.TotalFibersFood g
+        </p>
+        <p class="small">
+            Meal: @Model.FoodToAdd.MealTypeId.ToString()
+        </p>
+    </div>
+</div>

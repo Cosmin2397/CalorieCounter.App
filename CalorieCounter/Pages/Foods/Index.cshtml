@@ -1,0 +1,42 @@
+﻿@page
+@using CalorieCounter.Pages.Foods
+@model IndexModel
+
+<div style="right: 25px; bottom: 25px; padding-bottom:15px" class="text-white">
+            <a class="btn btn-success text-white" asp-page="Create">Add new food</a>
+</div>
+<h4>Foods List</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>KCal/100g</th>
+            <th>Protein</th>
+            <th>Carbs</th>
+            <th>Fats</th>
+            <th>Fibers</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var food in Model.FoodsList)
+        {
+            <tr>
+                <th>@food.Id</th>
+                <th>@food.Name</th>
+                <th>@food.Calories kcal</th>
+                <th>@food.Protein g</th>
+                <th>@food.Carbo g</th>
+                <th>@food.Fats g</th>
+                <th>@food.Fibers g</th>
+                <th>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@food.Id">Details</a> |
+                    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@food.Id">Edit</a> |
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@food.Id">Delete</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

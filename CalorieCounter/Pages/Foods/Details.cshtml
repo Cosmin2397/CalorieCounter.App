@@ -1,0 +1,32 @@
+﻿@page
+@model CalorieCounter.Pages.Foods.DetailsModel
+
+
+<div class="card text-center h-100">
+    <div class="card-header">
+        Food Values
+    </div>
+    <div class="card-body">
+        <p class="small">
+            Id: @Model.Food.Id
+        </p>
+        <p class="small">
+            Name: @Model.Food.Name
+        </p>
+        <p class="small">
+            Kcal/100g: @Model.Food.Calories
+        </p>
+        <p class="small">
+            Protein: @Model.Food.Protein g
+        </p>
+        <p class="small">
+            Carbs: @Model.Food.Carbo g
+        </p>
+        <p class="small">
+            Fats: @Model.Food.Fats g
+        </p>
+        <p class="small">
+            Fibers: @Model.Food.Fibers g
+        </p>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@page
+@using CalorieCounter.Data.Enums
+@model CalorieCounter.Pages.FoodsToAdd.CreateModel
+
+
+<h1>Add @Model.Food.Name</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+                <label class="control-label">Food Name</label>
+                <input value="@Model.Food.Name" class="form-control" disabled/>
+                <span asp-validation-for="FoodAdded.Servings" class="text-danger"></span>
+            </div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FoodAdded.Servings" class="control-label">Servings (1 serving = 100g)</label>
+                <input asp-for="FoodAdded.Servings" class="form-control" min = ">0"/>
+                <span asp-validation-for="FoodAdded.Servings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodAdded.MealTypeId" class="control-label"></label>
+                <select asp-for="FoodAdded.MealTypeId" class="form-control" >
+                    @foreach (var meal in Enum.GetValues(typeof(MealType)))
+                {
+                <option value="@meal">@meal</option>
+                }
+
+                </select>
+                <span asp-validation-for="FoodAdded.MealTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group" style = "padding-top:10px">
+                <input type="submit" value="Add Food" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
