@@ -16,7 +16,7 @@ namespace CalorieCounter.Services
             this.context = context;
         }
 
-        public async Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food)
+        public async Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food, int id)
         {
                 FoodToAdd foodToAdd1 = new FoodToAdd()
                 {
@@ -30,7 +30,7 @@ namespace CalorieCounter.Services
                     TotalFatsFood = foodToAdd.Servings * food.Fats,
                     TotalFibersFood = foodToAdd.Servings * food.Fibers,
                     MealTypeId = foodToAdd.MealTypeId,
-                    DashId = 1,
+                    FoodDashId = id
                 };
                 this.context.Add(foodToAdd1);
                 await this.context.SaveChangesAsync();
@@ -54,6 +54,13 @@ namespace CalorieCounter.Services
             {
                 return default;
             }
+
+        }
+
+        public async Task<IEnumerable<FoodToAdd>> GetFoodToAddByDashId(int id)
+        {
+            var foodToAdd = await this.context.FoodsToAdd.Include(f => f.Food).Where(m => m.FoodDashId == id).ToListAsync();
+            return foodToAdd;
 
         }
     }

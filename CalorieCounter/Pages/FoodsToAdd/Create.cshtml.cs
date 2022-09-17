@@ -22,6 +22,9 @@ namespace CalorieCounter.Pages.FoodsToAdd
         [BindProperty]
         public FoodToAdd FoodAdded { get; set;  } = default!;
 
+        [BindProperty]
+        public int Id { get; set; }
+
         public Food Food { get; set; }
 
         public async Task<IActionResult> OnGet(int id)
@@ -37,9 +40,9 @@ namespace CalorieCounter.Pages.FoodsToAdd
                 return Page();
             }
             Food = await foodService.GetFoodById(id);
-            await this.foodToAddService.AddFoodToAdd(FoodAdded, Food);
+            await this.foodToAddService.AddFoodToAdd(FoodAdded, Food, Id);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/FoodDashes/Details?id=1");
 
         }
     }

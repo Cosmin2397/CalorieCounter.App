@@ -1,0 +1,28 @@
+﻿@page
+@using CalorieCounter.Data.Enums
+@model CalorieCounter.Pages.FoodDashes.DetailsModel
+
+
+<div class="card text-center h-100">
+    <div class="card-header">
+        Food List for @DateTime.Now.Date
+    </div>
+    <div class="card-body">
+        @foreach (var meal in Enum.GetValues(typeof(MealType)))
+        {
+            <div>
+            <h3>@meal.ToString()</h3>
+            @foreach (var food in @Model.FoodAdded)
+                {
+                    @if(meal.Equals(food.MealTypeId))
+                    {
+                        <div>
+                            <p>@food.Food.Name, @food.TotalKcalFood</p>
+                        </div>
+                    }
+                }
+                <a class="btn btn-secondary" asp-page="/FoodDashes/GetFoods" asp-route-id="@Model.FoodDash.Id">Add food</a>
+            </div>
+        }
+    </div>
+</div>

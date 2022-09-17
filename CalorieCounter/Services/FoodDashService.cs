@@ -15,41 +15,24 @@ namespace CalorieCounter.Services
             this.context = context;
         }
 
-        public async Task<FoodDash> CreateDash(FoodDash foodDash, IEnumerable<FoodToAdd> foodToAdds)
+        public Task<FoodDash> CreateDash(FoodDash foodDash, IEnumerable<FoodToAdd> foodToAdds, DateTime date)
         {
-            FoodDash foodDash1 = new FoodDash()
-            {
-                Foods = foodToAdds,
-                TotalWeight = foodToAdds.Sum(t => t.TotalWeight),
-                TotalCarbs = foodToAdds.Sum(t => t.TotalCarbsFood),
-                TotalFats = foodToAdds.Sum(t => t.TotalFatsFood),
-                TotalProtein = foodToAdds.Sum(t => t.TotalProteinFood), 
-                TotalFibers = foodToAdds.Sum(t => t.TotalFibersFood),
-                TotalKcal = foodToAdds.Sum(t => t.TotalKcalFood),
-                DayId = 1
-            };
-            this.context.Add(foodDash1);
-
-            await this.context.SaveChangesAsync();
-            return foodDash1;
+            throw new NotImplementedException();
         }
 
-        public async Task<FoodDash> GetDashByDateId(int id)
+        public Task<FoodDash> GetDashByDateId(int id)
         {
-            var foodDash = await this.context.FoodDashes.Include(f => f.Foods).FirstOrDefaultAsync(m => m.DayId == id);
-            if (foodDash != null)
-            {
-                return foodDash;
-            }
-            else
-            {
-                return default;
-            }
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<FoodToAdd>> GetFoodsToAdd(int id)
+        public Task<IEnumerable<FoodToAdd>> GetFoodsToAdd(int id)
         {
-            return await this.context.FoodsToAdd.Where(c => c.DashId == id).ToListAsync();
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Food>> GetSearchedFoods(string search)
+        {
+            throw new NotImplementedException();
         }
     }
 }

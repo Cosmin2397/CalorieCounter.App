@@ -15,8 +15,6 @@ namespace CalorieCounter.Data
 
         public DbSet<FoodDash> FoodDashes { get; set; }
 
-        public DbSet<DayTotal> DaysTotal { get; set; }
-
         public DbSet<Expected> Expected { get; set; }
 
         public DbSet<FoodToAdd> FoodsToAdd { get; set; }

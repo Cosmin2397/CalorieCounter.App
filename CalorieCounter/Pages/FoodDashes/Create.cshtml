@@ -1,2 +1,16 @@
 ﻿@page
+@using CalorieCounter.Data.Enums
 @model CalorieCounter.Pages.FoodDashes.CreateModel
+
+
+<h1>Create new Food</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group" style = "padding-top:10px">
+                <input type="submit" value="Add Foods" class="btn btn-primary" asp-page="/FoodDashes/Details" asp-route-id="1"/>
+            </div>
+        </form>
+    </div>
+</div>

@@ -13,6 +13,7 @@ builder.Services.AddDbContextPool<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IFoodToAddService, FoodToAddService>();
+builder.Services.AddScoped<IFoodDashService, FoodDashService>();
 
 var app = builder.Build();
 

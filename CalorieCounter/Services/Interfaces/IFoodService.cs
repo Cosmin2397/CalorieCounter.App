@@ -4,7 +4,6 @@ namespace CalorieCounter.Services.Interfaces
 {
     public interface IFoodService
     {
-        Task<IEnumerable<Food>> GetSearchedFoods(string search);
 
         Task<IEnumerable<Food>> GetFoods();
 

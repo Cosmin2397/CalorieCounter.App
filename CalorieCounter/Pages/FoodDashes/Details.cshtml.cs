@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CalorieCounter.Pages.FoodDashes
 {
-    public class CreateModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly IFoodToAddService foodToAddService;
         private readonly IFoodDashService foodDashService;
 
-        public CreateModel(IFoodToAddService foodToAddService, IFoodDashService foodDashService)
+        public DetailsModel(IFoodToAddService foodToAddService, IFoodDashService foodDashService)
         {
             this.foodToAddService = foodToAddService;
             this.foodDashService = foodDashService;
@@ -20,19 +20,20 @@ namespace CalorieCounter.Pages.FoodDashes
         [BindProperty]
         public FoodDash FoodDash { get; set; } = default!;
 
-        public IEnumerable<FoodToAdd> FoodsToAdd { get; set; }
+        public IEnumerable<FoodToAdd> FoodAdded{ get; set; }
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            FoodsToAdd = await foodDashService.GetFoodsToAdd(id);
+            var foodDash = await foodDashService.GetDashByDateId(id);
+
+            if (!ModelState.IsValid || FoodDash == null)
+            {
+                return Page();
+            }
+
+            FoodAdded = await foodToAddService.GetFoodToAddByDashId(foodDash.Id);
+            FoodDash = foodDash;
             return Page();
-        }
-
-        public async Task OnPostAsync(int id)
-        {
-            FoodsToAdd = await foodDashService.GetFoodsToAdd(id);
-            await this.foodDashService.CreateDash(FoodDash, FoodsToAdd, DateTime.Now);
-
         }
     }
 }

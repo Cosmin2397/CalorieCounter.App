@@ -9,6 +9,8 @@ namespace CalorieCounter.Services.Interfaces
 
         Task<IEnumerable<FoodToAdd>> GetFoodsToAdd(int id);
 
-        Task<FoodDash> CreateDash(FoodDash foodDash, IEnumerable<FoodToAdd> foodToAdds);
+        Task<FoodDash> CreateDash(FoodDash foodDash, IEnumerable<FoodToAdd> foodToAdds, DateTime date);
+
+        Task<IEnumerable<Food>> GetSearchedFoods(string search);
     }
 }

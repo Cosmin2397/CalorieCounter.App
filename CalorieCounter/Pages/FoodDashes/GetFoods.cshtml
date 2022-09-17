@@ -1,6 +1,5 @@
 ﻿@page
-@model CalorieCounter.Pages.Foods.GetSearchedFoodModel
-
+@model CalorieCounter.Pages.FoodDashes.GetFoodsModel
 
 <h4>Search for Food</h4>
 <form method="get">
@@ -37,8 +36,8 @@
                 <th>@food.Fats g</th>
                 <th>@food.Fibers g</th>
                 <th>
-                    <a class="btn btn-secondary" asp-page="/FoodsToAdd/Create" asp-route-id="@food.Id">Add food</a>
-                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@food.Id">Details</a> |
+                    <a class="btn btn-secondary" asp-page="/FoodsToAdd/Create" asp-route-id="@food.Id">Add food</a> |
+                    <a class="btn btn-primary" asp-page="/Foods/Details" asp-route-id="@food.Id">Details</a>
                 </th>
             </tr>
         }

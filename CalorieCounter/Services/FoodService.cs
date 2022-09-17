@@ -50,15 +50,6 @@ namespace CalorieCounter.Services
             return await this.context.Foods.ToListAsync();
         }
 
-        public async Task<IEnumerable<Food>> GetSearchedFoods(string search)
-        {
-            if(string.IsNullOrEmpty(search))
-            {
-                return await this.context.Foods.ToListAsync();
-            }
-            return await this.context.Foods.Where(c => c.Name.Contains(search)).ToListAsync();
-        }
-
         public async Task<Food> UpdateFood(Food food)
         {
             var databaseFood = await this.context.Foods.FirstOrDefaultAsync(e => e.Id == food.Id);
