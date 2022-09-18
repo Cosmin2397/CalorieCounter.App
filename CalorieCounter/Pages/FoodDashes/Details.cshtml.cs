@@ -8,32 +8,45 @@ namespace CalorieCounter.Pages.FoodDashes
 {
     public class DetailsModel : PageModel
     {
-        private readonly IFoodToAddService foodToAddService;
         private readonly IFoodDashService foodDashService;
 
-        public DetailsModel(IFoodToAddService foodToAddService, IFoodDashService foodDashService)
+        public DetailsModel(IFoodDashService foodDashService)
         {
-            this.foodToAddService = foodToAddService;
             this.foodDashService = foodDashService;
         }
 
         [BindProperty]
-        public FoodDash FoodDash { get; set; } = default!;
-
-        public IEnumerable<FoodToAdd> FoodAdded{ get; set; }
+        public FoodDash FoodDash { get; set; } = new FoodDash();
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            var foodDash = await foodDashService.GetDashByDateId(id);
-
+            var foodDash = await foodDashService.GetDash(id);
+            foodDash.TotalWeight = foodDash.Foods.Sum(w => w.TotalWeight);
+            foodDash.TotalKcal = foodDash.Foods.Sum(w => w.TotalKcalFood);
+            foodDash.TotalCarbs = foodDash.Foods.Sum(w => w.TotalCarbsFood);
+            foodDash.TotalProtein = foodDash.Foods.Sum(w => w.TotalProteinFood);
+            foodDash.TotalFats = foodDash.Foods.Sum(w => w.TotalFatsFood);
+            foodDash.TotalFibers = foodDash.Foods.Sum(w => w.TotalFibersFood);
             if (!ModelState.IsValid || FoodDash == null)
             {
                 return Page();
             }
 
-            FoodAdded = await foodToAddService.GetFoodToAddByDashId(foodDash.Id);
             FoodDash = foodDash;
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var foodDash = await foodDashService.CreateDash(FoodDash.Date);
+            foodDash.TotalWeight = foodDash.Foods.Sum(w => w.TotalWeight);
+            foodDash.TotalKcal = foodDash.Foods.Sum(w => w.TotalKcalFood);
+            foodDash.TotalCarbs = foodDash.Foods.Sum(w => w.TotalCarbsFood);
+            foodDash.TotalProtein = foodDash.Foods.Sum(w => w.TotalProteinFood);
+            foodDash.TotalFats = foodDash.Foods.Sum(w => w.TotalFatsFood);
+            foodDash.TotalFibers = foodDash.Foods.Sum(w => w.TotalFibersFood);
+            
+            return RedirectToPage("./Details", new { id = foodDash.Id });
         }
     }
 }

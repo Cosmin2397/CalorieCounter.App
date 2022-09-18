@@ -30,7 +30,7 @@ namespace CalorieCounter.Pages.Foods
 
         public async Task<IActionResult> OnPostAsync(Food food)
         {
-            Food = await foodService.UpdateFood(food);
+            await foodService.UpdateFood(food);
 
             return RedirectToPage("./Index");
 

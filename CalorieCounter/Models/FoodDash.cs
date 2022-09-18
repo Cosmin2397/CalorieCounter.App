@@ -9,7 +9,7 @@ namespace CalorieCounter.Models
 
         public DateTime Date { get; set; }
 
-        public Expected ExpectedValues { get; set; } = new Expected();
+        public Expected ExpectedValues { get; set; }
 
         public double TotalWeight { get; set; }
 
@@ -23,7 +23,7 @@ namespace CalorieCounter.Models
 
         public double TotalFibers { get; set; }
 
-        public int UserId { get; set; }
+        public int UserId { get; set; } = 1;
 
         public IEnumerable<FoodToAdd> Foods { get; set; } = new List<FoodToAdd>();
 

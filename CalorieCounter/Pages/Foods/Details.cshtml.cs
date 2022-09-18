@@ -9,7 +9,7 @@ namespace CalorieCounter.Pages.Foods
     {
         private readonly IFoodService foodService;
 
-        public Food Food { get; set; }
+        public Food Food { get; set; } = new Food();
 
         public DetailsModel(IFoodService foodService)
         {

@@ -8,31 +8,29 @@ namespace CalorieCounter.Pages.FoodDashes
 {
     public class CreateModel : PageModel
     {
-        private readonly IFoodToAddService foodToAddService;
         private readonly IFoodDashService foodDashService;
 
-        public CreateModel(IFoodToAddService foodToAddService, IFoodDashService foodDashService)
+        public CreateModel(IFoodDashService foodDashService)
         {
-            this.foodToAddService = foodToAddService;
             this.foodDashService = foodDashService;
         }
 
-        [BindProperty]
-        public FoodDash FoodDash { get; set; } = default!;
+        public FoodDash FoodDash { get; set; } = new FoodDash();
 
-        public IEnumerable<FoodToAdd> FoodsToAdd { get; set; }
+        DateTime Day { get; set; } = DateTime.Now;
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet()
         {
-            FoodsToAdd = await foodDashService.GetFoodsToAdd(id);
-            return Page();
+            var dash = await this.foodDashService.CreateDash(Day);
+
+            return RedirectToPage("./Details", new { id = dash.Id });
         }
 
-        public async Task OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            FoodsToAdd = await foodDashService.GetFoodsToAdd(id);
-            await this.foodDashService.CreateDash(FoodDash, FoodsToAdd, DateTime.Now);
+            var dash = await this.foodDashService.CreateDash(FoodDash.Date);
 
+            return RedirectToPage("./Details", new { id = dash.Id });
         }
     }
 }

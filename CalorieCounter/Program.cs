@@ -2,6 +2,7 @@ using CalorieCounter.Data;
 using CalorieCounter.Services;
 using CalorieCounter.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

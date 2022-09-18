@@ -5,12 +5,17 @@ namespace CalorieCounter.Services.Interfaces
 {
     public interface IFoodDashService
     {
-        Task<FoodDash> GetDashByDateId(int id);
+        Task<FoodDash> GetDash(int id);
+
+        Task<FoodDash> GetDashByDate(DateTime date);
 
         Task<IEnumerable<FoodToAdd>> GetFoodsToAdd(int id);
 
-        Task<FoodDash> CreateDash(FoodDash foodDash, IEnumerable<FoodToAdd> foodToAdds, DateTime date);
+        Task<FoodDash> CreateDash(DateTime date);
 
         Task<IEnumerable<Food>> GetSearchedFoods(string search);
+
+        Task<Expected> GetExpectedByUserId(int id);
+
     }
 }

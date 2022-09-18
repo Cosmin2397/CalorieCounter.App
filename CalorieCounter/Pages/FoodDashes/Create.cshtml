@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/"
 @using CalorieCounter.Data.Enums
 @model CalorieCounter.Pages.FoodDashes.CreateModel
 
@@ -9,7 +9,7 @@
     <div class="col-md-4">
         <form method="post">
             <div class="form-group" style = "padding-top:10px">
-                <input type="submit" value="Add Foods" class="btn btn-primary" asp-page="/FoodDashes/Details" asp-route-id="1"/>
+                <input type="submit" value="Start Your Day" class="btn btn-primary" asp-page="/FoodDashes/Create/" />
             </div>
         </form>
     </div>

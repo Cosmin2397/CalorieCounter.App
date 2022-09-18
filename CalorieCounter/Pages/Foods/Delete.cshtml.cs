@@ -15,7 +15,7 @@ namespace CalorieCounter.Pages.Foods
         }
 
         [BindProperty]
-        public Food FoodToDelete { get; set; }
+        public Food FoodToDelete { get; set; } = new Food();
 
         public async Task<IActionResult> OnGet(int id)
         {
@@ -30,11 +30,7 @@ namespace CalorieCounter.Pages.Foods
 
         public async Task<IActionResult> OnPost()
         {
-            var deletedFood = await foodService.DeleteFood(FoodToDelete.Id);
-            if(deletedFood == null)
-            {
-                return NotFound();
-            }
+            await foodService.DeleteFood(FoodToDelete.Id);
 
             return RedirectToPage("./Index");
 

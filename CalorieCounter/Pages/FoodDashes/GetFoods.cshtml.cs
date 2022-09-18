@@ -9,12 +9,12 @@ namespace CalorieCounter.Pages.FoodDashes
     {
         private readonly IFoodDashService foodDashService;
 
-        public FoodDash FoodsDash { get; set; }
-
-        public IEnumerable<Food> FoodsList { get; set; } = default!;
+        public IEnumerable<Food> FoodsList { get; set; } = new List<Food>();
 
         [BindProperty(SupportsGet = true)]
-        public string SearchFood { get; set; }
+        public string SearchFood { get; set; } = String.Empty;
+
+        public int DashId { get; set; }
 
         public GetFoodsModel(IFoodDashService foodDashService)
         {
@@ -24,7 +24,7 @@ namespace CalorieCounter.Pages.FoodDashes
         public async Task OnGet(int id)
         {
            FoodsList = await foodDashService.GetSearchedFoods(SearchFood);
-           FoodsDash = await foodDashService.GetDashByDateId(id);
+           DashId = id;
         }
     }
 }

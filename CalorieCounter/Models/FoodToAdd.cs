@@ -29,6 +29,6 @@ namespace CalorieCounter.Dto
 
         public MealType MealTypeId { get; set; }
 
-        public int FoodDashId { get; set; }
+        public int DashId { get; set; }
     }
 }

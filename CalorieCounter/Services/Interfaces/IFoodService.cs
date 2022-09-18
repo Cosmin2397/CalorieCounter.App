@@ -11,8 +11,8 @@ namespace CalorieCounter.Services.Interfaces
 
         Task AddFood(Food food);
 
-        Task<Food> UpdateFood(Food food);
+        Task UpdateFood(Food food);
 
-        Task<Food> DeleteFood(int id);
+        Task DeleteFood(int id);
     }
 }

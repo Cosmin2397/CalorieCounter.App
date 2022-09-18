@@ -7,7 +7,7 @@
         <input class="form-control" asp-for="SearchFood"/>
     </div>
     <div class="input-group-append" style="padding:10px">
-                <button type="submit" class="btn btn-primary">Search</button>
+         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
 
@@ -36,7 +36,7 @@
                 <th>@food.Fats g</th>
                 <th>@food.Fibers g</th>
                 <th>
-                    <a class="btn btn-secondary" asp-page="/FoodsToAdd/Create" asp-route-id="@food.Id">Add food</a> |
+                    <a class="btn btn-secondary" asp-page="/FoodDashes/AddFood" asp-route-id="@food.Id" asp-route-dashId="@Model.DashId">Add food</a> |
                     <a class="btn btn-primary" asp-page="/Foods/Details" asp-route-id="@food.Id">Details</a>
                 </th>
             </tr>

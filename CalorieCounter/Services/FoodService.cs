@@ -20,7 +20,7 @@ namespace CalorieCounter.Services
                 await this.context.SaveChangesAsync();
         }
 
-        public async Task<Food> DeleteFood(int id)
+        public async Task DeleteFood(int id)
         {
             var food = await this.context.Foods.FirstOrDefaultAsync(e => e.Id == id);
             if (food != null)
@@ -28,7 +28,6 @@ namespace CalorieCounter.Services
                 this.context.Foods.Remove(food);
                 await this.context.SaveChangesAsync();
             }
-            return food;
         }
 
         public async Task<Food> GetFoodById(int id)
@@ -40,7 +39,7 @@ namespace CalorieCounter.Services
             }
           else
             {
-                return default;
+                return new Food();
             }
 
         }
@@ -50,7 +49,7 @@ namespace CalorieCounter.Services
             return await this.context.Foods.ToListAsync();
         }
 
-        public async Task<Food> UpdateFood(Food food)
+        public async Task UpdateFood(Food food)
         {
             var databaseFood = await this.context.Foods.FirstOrDefaultAsync(e => e.Id == food.Id);
             if(databaseFood != null)
@@ -64,7 +63,6 @@ namespace CalorieCounter.Services
                 databaseFood.Fats = food.Fats;
             }
             await this.context.SaveChangesAsync();
-            return databaseFood;
         }
     }
 }
