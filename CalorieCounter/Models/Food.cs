@@ -1,4 +1,6 @@
-﻿namespace CalorieCounter.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CalorieCounter.Models
 {
     public class Food
     {

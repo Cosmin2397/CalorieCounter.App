@@ -1,3 +1,4 @@
+using CalorieCounter.Dto;
 using CalorieCounter.Models;
 using CalorieCounter.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -9,22 +10,22 @@ namespace CalorieCounter.Pages.FoodDashes
     {
         private readonly IFoodDashService foodDashService;
 
-        public IEnumerable<Food> FoodsList { get; set; } = new List<Food>();
+        public IEnumerable<Food> Foods { get; set; } = new List<Food>();
 
         [BindProperty(SupportsGet = true)]
-        public string SearchFood { get; set; } = String.Empty;
+        public string SearchFood { get; set; } = "Search for Food";
 
-        public int DashId { get; set; }
+        public int DashId { get; set; } 
 
         public GetFoodsModel(IFoodDashService foodDashService)
         {
             this.foodDashService = foodDashService;
         }
 
-        public async Task OnGet(int id)
+        public async Task OnGet(int dashId)
         {
-           FoodsList = await foodDashService.GetSearchedFoods(SearchFood);
-           DashId = id;
+            DashId = dashId;
+            Foods = await foodDashService.GetSearchedFoods(SearchFood);
         }
     }
 }

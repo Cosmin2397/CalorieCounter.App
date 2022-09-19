@@ -17,5 +17,7 @@ namespace CalorieCounter.Services.Interfaces
 
         Task<Expected> GetExpectedByUserId(int id);
 
+        Task<Food> GetFoodFromList(int id, IEnumerable<Food> foods);
+
     }
 }

@@ -1,7 +1,6 @@
-﻿@page
+﻿@page "/FoodDashes/GetFoods/{dashId}/"
 @model CalorieCounter.Pages.FoodDashes.GetFoodsModel
 
-<h4>Search for Food</h4>
 <form method="get">
     <div class="input-group"> 
         <input class="form-control" asp-for="SearchFood"/>
@@ -14,7 +13,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>KCal/100g</th>
             <th>Protein</th>
@@ -25,10 +23,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var food in Model.FoodsList)
+        @foreach(var food in Model.Foods)
         {
             <tr>
-                <th>@food.Id</th>
                 <th>@food.Name</th>
                 <th>@food.Calories kcal</th>
                 <th>@food.Protein g</th>
@@ -36,8 +33,7 @@
                 <th>@food.Fats g</th>
                 <th>@food.Fibers g</th>
                 <th>
-                    <a class="btn btn-secondary" asp-page="/FoodDashes/AddFood" asp-route-id="@food.Id" asp-route-dashId="@Model.DashId">Add food</a> |
-                    <a class="btn btn-primary" asp-page="/Foods/Details" asp-route-id="@food.Id">Details</a>
+                    <a class="btn btn-secondary" asp-page="/FoodDashes/AddFood" asp-route-id="@food.Id" asp-route-dashId="@Model.DashId" asp-route-search="@Model.SearchFood">Add food</a>
                 </th>
             </tr>
         }

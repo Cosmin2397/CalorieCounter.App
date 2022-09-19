@@ -9,12 +9,12 @@ namespace CalorieCounter.Pages.FoodDashes
     public class AddFoodModel : PageModel
     {
         private readonly IFoodToAddService foodToAddService;
-        private readonly IFoodService foodService;
+        private readonly IFoodDashService foodDashService;
 
-        public AddFoodModel(IFoodToAddService foodToAddService, IFoodService foodService)
+        public AddFoodModel(IFoodToAddService foodToAddService, IFoodDashService foodDashService)
         {
             this.foodToAddService = foodToAddService;
-            this.foodService = foodService;
+            this.foodDashService = foodDashService;
         }
 
         [BindProperty]
@@ -26,22 +26,26 @@ namespace CalorieCounter.Pages.FoodDashes
         [BindProperty]
         public int DashId { get; set; }
 
+        public IEnumerable<Food> ListOfFoods { get; set; }
+
         public Food Food { get; set; } = new Food();
 
-        public async Task<IActionResult> OnGet(int id, int dashId)
+        public async Task<IActionResult> OnGet(int id, int dashId, string search)
         {
-            Food = await foodService.GetFoodById(id);
+            ListOfFoods = await this.foodDashService.GetSearchedFoods(search);
+            Food = await foodDashService.GetFoodFromList(id, ListOfFoods);
             DashId = dashId;
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id, string search)
         {
+            ListOfFoods = await this.foodDashService.GetSearchedFoods(search);
             if (!ModelState.IsValid || FoodAdded == null)
             {
                 return Page();
             }
-            Food = await foodService.GetFoodById(id);
+            Food = await foodDashService.GetFoodFromList(id, ListOfFoods);
             var foodAdded = await this.foodToAddService.AddFoodToAdd(FoodAdded, Food, DashId);
             FoodAdded = foodAdded;
             return RedirectToPage("./Details", new { id = DashId });

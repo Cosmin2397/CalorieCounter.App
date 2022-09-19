@@ -36,8 +36,8 @@ namespace CalorieCounter.Migrations
                     b.Property<int?>("FoodDashId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("FoodGId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("MealTypeId")
                         .HasColumnType("int");
@@ -70,7 +70,7 @@ namespace CalorieCounter.Migrations
 
                     b.HasIndex("FoodDashId");
 
-                    b.HasIndex("FoodId");
+                    b.HasIndex("FoodGId");
 
                     b.ToTable("FoodsToAdd");
                 });
@@ -108,11 +108,9 @@ namespace CalorieCounter.Migrations
 
             modelBuilder.Entity("CalorieCounter.Models.Food", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("GId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Calories")
                         .HasColumnType("float");
@@ -126,6 +124,9 @@ namespace CalorieCounter.Migrations
                     b.Property<double>("Fibers")
                         .HasColumnType("float");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -133,7 +134,7 @@ namespace CalorieCounter.Migrations
                     b.Property<double>("Protein")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.HasKey("GId");
 
                     b.ToTable("Foods");
                 });
@@ -188,7 +189,7 @@ namespace CalorieCounter.Migrations
 
                     b.HasOne("CalorieCounter.Models.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId")
+                        .HasForeignKey("FoodGId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
