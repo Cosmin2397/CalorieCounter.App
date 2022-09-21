@@ -87,5 +87,25 @@ namespace CalorieCounter.Services
                 await this.context.SaveChangesAsync();
             }
         }
+
+        public async Task UpdateFood(FoodToAdd food)
+        {
+            var databaseFood = await this.context.FoodsToAdd.FirstOrDefaultAsync(e => e.Id == food.Id);
+            if (databaseFood != null)
+            {
+                databaseFood.Food = food.Food;
+                databaseFood.Id = food.Id;
+                databaseFood.Servings = food.Servings;
+                databaseFood.ServingWeight = food.ServingWeight;
+                databaseFood.TotalWeight = food.Servings * food.ServingWeight;
+                databaseFood.TotalKcalFood = food.Servings * food.Food.Calories;
+                databaseFood.TotalCarbsFood = food.Servings * food.Food.Carbo;
+                databaseFood.TotalProteinFood = food.Servings * food.Food.Protein;
+                databaseFood.TotalFatsFood = food.Servings * food.Food.Fats;
+                databaseFood.TotalFibersFood = food.Servings * food.Food.Fibers;
+                databaseFood.MealTypeId = food.MealTypeId;
+            }
+            await this.context.SaveChangesAsync();
+        }
     }
 }

@@ -1,0 +1,40 @@
+﻿@page
+@using CalorieCounter.Data.Enums
+@model CalorieCounter.Pages.FoodDashes.EditFoodModel
+<h4>Edit Food</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Food Name</label>
+                <input value="@Model.Food.Food.Name" class="form-control" disabled/>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Food.Id" />
+            <div class="form-group">
+                <label asp-for="Food.Servings" class="control-label">Servings (1 serving = 100g)</label>
+                <input asp-for="Food.Servings" class="form-control" />
+                <span asp-validation-for="Food.Servings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Food.MealTypeId" class="control-label"></label>
+                <select asp-for="Food.MealTypeId" class="form-control" >
+                    @foreach (var meal in Enum.GetValues(typeof(MealType)))
+                {
+                <option value="@meal">@meal</option>
+                }
+
+                </select>
+                <span asp-validation-for="Food.MealTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group" style = "padding-top:10px">
+                <input type="submit" value="Save" class="btn btn-primary"  />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="right: 25px; padding-top: 10px;" class="text-white">
+    <a class="btn btn-light" asp-page="./Create">Back to Dash</a>
+</div>

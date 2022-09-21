@@ -29,7 +29,6 @@ namespace CalorieCounter.Services
                 FoodDash dash = new()
                 {
                     Date = date,
-                    UserId = 1,
                     ExpectedValues = await GetExpectedByUserId(1),
 
                 };
@@ -90,7 +89,7 @@ namespace CalorieCounter.Services
 
         public async Task<Expected> GetExpectedByUserId(int id)
         {
-            var expected = await this.context.Expected.FirstOrDefaultAsync(d => d.UserId == id);
+            var expected = await this.context.Expected.FirstOrDefaultAsync(d => d.Id == id);
             return expected;
         }
 

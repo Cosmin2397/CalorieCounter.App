@@ -11,6 +11,8 @@ namespace CalorieCounter.Services.Interfaces
 
         Task<FoodToAdd> GetFoodToAddById(int id);
 
+        Task UpdateFood(FoodToAdd food);
+
         Task<IEnumerable<FoodToAdd>> GetFoodToAddByDashId(int id);
 
         Task<IEnumerable<FoodToAdd>> GetFoodsToAdd();

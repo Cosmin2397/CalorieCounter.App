@@ -13,7 +13,5 @@
         public double ExpectedFats { get; set; }
 
         public double ExpectedFibers { get; set; }
-
-        public int UserId { get; set; }
     }
 }

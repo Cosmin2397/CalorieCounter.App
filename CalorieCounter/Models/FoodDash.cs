@@ -23,8 +23,6 @@ namespace CalorieCounter.Models
 
         public double TotalFibers { get; set; }
 
-        public int UserId { get; set; } = 1;
-
         public IEnumerable<FoodToAdd> Foods { get; set; } = new List<FoodToAdd>();
 
 

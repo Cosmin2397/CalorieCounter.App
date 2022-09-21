@@ -1,0 +1,31 @@
+﻿@page
+@model CalorieCounter.Pages.LoginModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <h3 class="mb-3">Log in</h3>
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Login.Email">Email Adress</label>
+                    <input  type="email" class="form-control" asp-for="Login.Email"/>
+                    <span asp-validation-for="Login.Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Login.Password">Password</label>
+                    <input  type="password" class="form-control" asp-for="Login.Password"/>
+                    <span asp-validation-for="Login.Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <input  type="checkbox" class="form-check-input" asp-for="Login.RememberMe"/>
+                    <label class="form-check-label" asp-for="Login.RememberMe">Remember Me</label>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
