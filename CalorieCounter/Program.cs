@@ -1,6 +1,7 @@
 using CalorieCounter.Data;
 using CalorieCounter.Services;
 using CalorieCounter.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,8 @@ var connectionString = builder.Configuration.GetConnectionString("AppDbContext")
 
 builder.Services.AddDbContextPool<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IFoodToAddService, FoodToAddService>();
 builder.Services.AddScoped<IFoodDashService, FoodDashService>();
@@ -33,6 +36,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapRazorPages();
 

@@ -30,5 +30,7 @@ namespace CalorieCounter.Dto
         public MealType MealTypeId { get; set; }
 
         public int DashId { get; set; }
+
+        public string User { get; set; } = string.Empty;
     }
 }

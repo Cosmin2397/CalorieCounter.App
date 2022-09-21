@@ -36,6 +36,7 @@
                             <h6>@food.Food.Name, @food.TotalKcalFood Kcal</h6>
                             <h7 style="font-style:italic">@food.TotalWeight grams</h7>
                             <a class="btn btn-secondary" asp-page="/FoodsToAdd/Details" asp-route-id="@food.Id">Details</a>
+                            <a class="btn btn-warning" asp-page="./EditFood" asp-route-id="@food.Id">Edit</a>
                             <a class="btn btn-danger" asp-page="/FoodsToAdd/Delete" asp-route-id="@food.Id">Delete</a>
                         </div>
                     }

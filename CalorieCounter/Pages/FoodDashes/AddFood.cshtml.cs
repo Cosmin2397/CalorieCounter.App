@@ -51,5 +51,16 @@ namespace CalorieCounter.Pages.FoodDashes
             return RedirectToPage("./Details", new { id = DashId });
 
         }
+
+
+        private string GetUser()
+        {
+            var user = User.Identity.Name;
+            if(string.IsNullOrEmpty(user))
+            {
+                return string.Empty;
+            }
+            return user;
+        }
     }
 }

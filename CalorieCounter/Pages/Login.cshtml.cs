@@ -23,12 +23,12 @@ namespace CalorieCounter.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(Login.Email, Login.Password, Login.RememberMe, false);
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
-                        return RedirectToPage("/FoodDashes/Create");
+                    return RedirectToPage("/FoodDashes/Create");
 
                 }
 
