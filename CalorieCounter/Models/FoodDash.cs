@@ -9,8 +9,6 @@ namespace CalorieCounter.Models
 
         public DateTime Date { get; set; }
 
-        public Expected ExpectedValues { get; set; }
-
         public double TotalWeight { get; set; }
 
         public double TotalKcal { get; set; }

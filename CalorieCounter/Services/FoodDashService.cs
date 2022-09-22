@@ -29,8 +29,7 @@ namespace CalorieCounter.Services
                 FoodDash dash = new()
                 {
                     Date = date,
-                    ExpectedValues = await GetExpectedByUserId(1),
-
+                    
                 };
                 await this.context.AddAsync(dash);
                 await this.context.SaveChangesAsync();    
@@ -68,14 +67,14 @@ namespace CalorieCounter.Services
 
         public async Task<FoodDash> GetDashByDate(DateTime date)
         {
-            var dash = await this.context.FoodDashes.Include(f => f.Foods).Include(e => e.ExpectedValues).FirstOrDefaultAsync(d => d.Date.Date == date.Date);
+            var dash = await this.context.FoodDashes.Include(f => f.Foods).FirstOrDefaultAsync(d => d.Date.Date == date.Date);
             return dash;
         }
 
-        public async Task<FoodDash> GetDash(int id)
+        public async Task<FoodDash> GetDash(int id, string user)
         {
-            var dash = await this.context.FoodDashes.Include(f => f.Foods).Include(e => e.ExpectedValues).FirstOrDefaultAsync(d => d.Id == id);
-            dash.Foods = await this.context.FoodsToAdd.Include(f => f.Food).Where(f => f.DashId == dash.Id).ToListAsync();
+            var dash = await this.context.FoodDashes.Include(f => f.Foods).FirstOrDefaultAsync(d => d.Id == id);
+            dash.Foods = await this.context.FoodsToAdd.Include(f => f.Food).Where(f => f.DashId == dash.Id && f.User == user).ToListAsync();
             return dash;
         }
 
@@ -84,13 +83,6 @@ namespace CalorieCounter.Services
         {
             var food = foods.FirstOrDefault(f => f.Id == id);
             return food;
-        }
-
-
-        public async Task<Expected> GetExpectedByUserId(int id)
-        {
-            var expected = await this.context.Expected.FirstOrDefaultAsync(d => d.Id == id);
-            return expected;
         }
 
         public async  Task<IEnumerable<Food>> GetApiFoodsBySearch(string search)

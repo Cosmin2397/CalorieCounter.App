@@ -46,7 +46,7 @@ namespace CalorieCounter.Pages.FoodDashes
                 return Page();
             }
             Food = await foodDashService.GetFoodFromList(id, ListOfFoods);
-            var foodAdded = await this.foodToAddService.AddFoodToAdd(FoodAdded, Food, DashId);
+            var foodAdded = await this.foodToAddService.AddFoodToAdd(FoodAdded, Food, DashId, GetUser());
             FoodAdded = foodAdded;
             return RedirectToPage("./Details", new { id = DashId });
 

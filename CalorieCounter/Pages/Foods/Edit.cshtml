@@ -10,32 +10,32 @@
             <input type="hidden" asp-for="Food.Id" />
             <div class="form-group">
                 <label asp-for="Food.Name" class="control-label" title="Food Name"></label>
-                <input asp-for="Food.Name" class="form-control" />
+                <input asp-for="Food.Name" class="form-control" type="text" minlength=1/>
                 <span asp-validation-for="Food.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Calories" class="control-label"></label>
-                <input asp-for="Food.Calories" class="form-control" />
+                <input asp-for="Food.Calories" class="form-control" type="number" step="0.01" min="0"/>
                 <span asp-validation-for="Food.Calories" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Protein" class="control-label"></label>
-                <input asp-for="Food.Protein" class="form-control" />
+                <input asp-for="Food.Protein" class="form-control" type="number" step="0.01" min="0"/>
                 <span asp-validation-for="Food.Protein" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Carbo" class="control-label" title= "Carbohidrates"></label>
-                <input asp-for="Food.Carbo" class="form-control" />
+                <input asp-for="Food.Carbo" class="form-control" type="number" step="0.01" min="0"/>
                 <span asp-validation-for="Food.Carbo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Fats" class="control-label"></label>
-                <input asp-for="Food.Fats" class="form-control" />
+                <input asp-for="Food.Fats" class="form-control" type="number" step="0.01" min="0"/>
                 <span asp-validation-for="Food.Fats" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Fibers" class="control-label"></label>
-                <input asp-for="Food.Fibers" class="form-control" />
+                <input asp-for="Food.Fibers" class="form-control" type="number" step="0.01" min="0"/>
                 <span asp-validation-for="Food.Fibers" class="text-danger"></span>
             </div>
             <div class="form-group" style = "padding-top:10px">

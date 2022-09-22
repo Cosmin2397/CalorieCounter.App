@@ -4,6 +4,7 @@ using CalorieCounter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalorieCounter.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220921133805_AddUserNameExpected")]
+    partial class AddUserNameExpected
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,6 +156,9 @@ namespace CalorieCounter.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ExpectedValuesId")
+                        .HasColumnType("int");
+
                     b.Property<double>("TotalCarbs")
                         .HasColumnType("float");
 
@@ -172,7 +177,13 @@ namespace CalorieCounter.Migrations
                     b.Property<double>("TotalWeight")
                         .HasColumnType("float");
 
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ExpectedValuesId");
 
                     b.ToTable("FoodDashes");
                 });
@@ -388,6 +399,17 @@ namespace CalorieCounter.Migrations
                         .IsRequired();
 
                     b.Navigation("Food");
+                });
+
+            modelBuilder.Entity("CalorieCounter.Models.FoodDash", b =>
+                {
+                    b.HasOne("CalorieCounter.Models.Expected", "ExpectedValues")
+                        .WithMany()
+                        .HasForeignKey("ExpectedValuesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExpectedValues");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

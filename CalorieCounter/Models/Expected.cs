@@ -13,5 +13,7 @@
         public double ExpectedFats { get; set; }
 
         public double ExpectedFibers { get; set; }
+
+        public string User { get; set; } = string.Empty;
     }
 }

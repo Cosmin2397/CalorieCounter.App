@@ -32,12 +32,16 @@
                 {
                     @if(meal.Equals(food.MealTypeId))
                     {
-                        <div class="alert alert-dark">
+                        <div class="alert alert-primary">
                             <h6>@food.Food.Name, @food.TotalKcalFood Kcal</h6>
+                            <div class="d-flex justify-content-between">
                             <h7 style="font-style:italic">@food.TotalWeight grams</h7>
+                            <div class="btn-group" role="group">
                             <a class="btn btn-secondary" asp-page="/FoodsToAdd/Details" asp-route-id="@food.Id">Details</a>
                             <a class="btn btn-warning" asp-page="./EditFood" asp-route-id="@food.Id">Edit</a>
                             <a class="btn btn-danger" asp-page="/FoodsToAdd/Delete" asp-route-id="@food.Id">Delete</a>
+                            </div>
+                            </div>
                         </div>
                     }
                 }
@@ -45,26 +49,26 @@
             </div>
         }
         <div style="padding-top:20px">
-        @if(Model.HasExpected(Model.FoodDash.ExpectedValues, Model.FoodDash))
+        @if(Model.HasExpected(Model.Expected, Model.FoodDash))
          {
             <div class="alert alert-success">
                             <p style="font-style:italic"> You made it!</p>
-                            <h6>Expected: @Model.FoodDash.TotalKcal/ @Model.FoodDash.ExpectedValues.ExpectedKcal kcal</h6> 
-                            <h7>Carbs: @Model.FoodDash.TotalCarbs/ @Model.FoodDash.ExpectedValues.ExpectedCarbs g</h7>
-                            <h7>Total Protein: @Model.FoodDash.TotalProtein/ @Model.FoodDash.ExpectedValues.ExpectedProtein g</h7>
-                            <h7>Total Fats: @Model.FoodDash.TotalFats/ @Model.FoodDash.ExpectedValues.ExpectedFats g</h7>
-                            <h7>Total Fibers: @Model.FoodDash.TotalFibers/ @Model.FoodDash.ExpectedValues.ExpectedFibers g</h7>
+                            <h6>Expected: @Model.FoodDash.TotalKcal/ @Model.Expected.ExpectedKcal kcal</h6> 
+                            <h7>Carbs: @Model.FoodDash.TotalCarbs/ @Model.Expected.ExpectedCarbs g</h7>
+                            <h7>Total Protein: @Model.FoodDash.TotalProtein/ @Model.Expected.ExpectedProtein g</h7>
+                            <h7>Total Fats: @Model.FoodDash.TotalFats/ @Model.Expected.ExpectedFats g</h7>
+                            <h7>Total Fibers: @Model.FoodDash.TotalFibers/ @Model.Expected.ExpectedFibers g</h7>
                             <h7 style="font-style:italic">Weight: @Model.FoodDash.TotalWeight grams g</h7>
           </div>
           }
           else
           {
             <div class="alert alert-dark">
-                <h6>Expected: @Model.FoodDash.TotalKcal/ @Model.FoodDash.ExpectedValues.ExpectedKcal kcal</h6>
-                <h7>Carbs: @Model.FoodDash.TotalCarbs/ @Model.FoodDash.ExpectedValues.ExpectedCarbs g</h7>
-                <h7>Total Protein: @Model.FoodDash.TotalProtein/ @Model.FoodDash.ExpectedValues.ExpectedProtein g</h7>
-                <h7>Total Fats: @Model.FoodDash.TotalFats/ @Model.FoodDash.ExpectedValues.ExpectedFats g</h7>
-                <h7>Total Fibers: @Model.FoodDash.TotalFibers/ @Model.FoodDash.ExpectedValues.ExpectedFibers g</h7>
+                <h6>Expected: @Model.FoodDash.TotalKcal/ @Model.Expected.ExpectedKcal kcal</h6>
+                <h7>Carbs: @Model.FoodDash.TotalCarbs/ @Model.Expected.ExpectedCarbs g</h7>
+                <h7>Total Protein: @Model.FoodDash.TotalProtein/ @Model.Expected.ExpectedProtein g</h7>
+                <h7>Total Fats: @Model.FoodDash.TotalFats/ @Model.Expected.ExpectedFats g</h7>
+                <h7>Total Fibers: @Model.FoodDash.TotalFibers/ @Model.Expected.ExpectedFibers g</h7>
                 <h7 style="font-style:italic">Weight: @Model.FoodDash.TotalWeight grams</h7>
              </div>
           }

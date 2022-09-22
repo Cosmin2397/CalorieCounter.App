@@ -18,6 +18,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IFoodToAddService, FoodToAddService>();
 builder.Services.AddScoped<IFoodDashService, FoodDashService>();
+builder.Services.AddScoped<IExpectedService, ExpectedService>();
 builder.Services.AddSingleton<HttpClient>();
 
 var app = builder.Build();

@@ -16,7 +16,7 @@ namespace CalorieCounter.Services
             this.context = context;
         }
 
-        public async Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food, int id)
+        public async Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food, int id, string user)
         {
                 var addedFood = await AddApiFood(food);
                 FoodToAdd foodToAdd1 = new()
@@ -31,7 +31,8 @@ namespace CalorieCounter.Services
                     TotalFatsFood = foodToAdd.Servings * food.Fats,
                     TotalFibersFood = foodToAdd.Servings * food.Fibers,
                     MealTypeId = foodToAdd.MealTypeId,
-                    DashId = id
+                    DashId = id,
+                    User = user
                 };
 
                 this.context.Add(foodToAdd1);

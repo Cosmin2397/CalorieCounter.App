@@ -7,7 +7,7 @@ namespace CalorieCounter.Services.Interfaces
     public interface IFoodToAddService
     {
 
-        Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food, int id);
+        Task<FoodToAdd> AddFoodToAdd(FoodToAdd foodToAdd, Food food, int id, string user);
 
         Task<FoodToAdd> GetFoodToAddById(int id);
 
