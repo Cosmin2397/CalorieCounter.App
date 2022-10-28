@@ -2,43 +2,79 @@
 @model CalorieCounter.Pages.FoodsToAdd.DetailsModel
 
 
-<div class="card text-center h-100">
-    <div class="card-header">
-        Food Values
-    </div>
-    <div class="card-body">
-        <p class="small">
-            Name: @Model.FoodToAdd.Food.Name
-        </p>
-        <p class="small">
-            Servings: @Model.FoodToAdd.Servings
-        </p>
-        <p class="small">
-            Serving Weight: @Model.FoodToAdd.ServingWeight g
-        </p>
-        <p class="small">
-            Weight: @Model.FoodToAdd.TotalWeight g
-        </p>
-        <p class="small">
-            Kcal: @Model.FoodToAdd.TotalKcalFood 
-        </p>
-        <p class="small">
-            Protein: @Model.FoodToAdd.TotalProteinFood g
-        </p>
-        <p class="small">
-            Carbs: @Model.FoodToAdd.TotalCarbsFood g
-        </p>
-        <p class="small">
-            Fats: @Model.FoodToAdd.TotalFatsFood g
-        </p>
-        <p class="small">
-            Fibers: @Model.FoodToAdd.TotalFibersFood g
-        </p>
-        <p class="small">
-            Meal: @Model.FoodToAdd.MealTypeId.ToString()
-        </p>
-        <p class="small">
-            DashID: @Model.FoodToAdd.DashId
-        </p>
-    </div>
+<div class="center-screen">
+<section class="performance-facts">
+    <header class="performance-facts__header">
+            <h1 class="performance-facts__title">@Model.FoodToAdd.Food.Name</h1>
+    </header>
+    <table class="performance-facts__table">
+        <thead>
+            <tr>
+                <th colspan="3" class="small-info">
+                    *Food Added Info
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="2">
+                    <b>Meal: </b>
+                    @Model.FoodToAdd.MealTypeId.ToString()
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Servings: </b>
+                    @Model.FoodToAdd.Servings
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Serving Weight: </b>
+                    @Model.FoodToAdd.ServingWeight g
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Total Weight: </b>
+                    @Model.FoodToAdd.TotalWeight g
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Calories: </b>
+                    @Model.FoodToAdd.TotalKcalFood kcal
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Total Fat: </b>
+                    @Model.FoodToAdd.TotalFatsFood g
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <b>Total Carbohydrate: </b>
+                    @Model.FoodToAdd.TotalCarbsFood g
+                </th>
+            </tr>
+            <tr>
+                <td class="blank-cell">
+                </td>
+                <th>
+                    Dietary Fiber:
+                    @Model.FoodToAdd.TotalFibersFood g
+                </th>
+            </tr>
+            <tr class="thick-end">
+                <th colspan="2">
+                    <b>Protein: </b>
+                    @Model.FoodToAdd.TotalProteinFood g
+                </th>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 </div>

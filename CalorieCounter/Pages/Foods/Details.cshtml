@@ -2,31 +2,55 @@
 @model CalorieCounter.Pages.Foods.DetailsModel
 
 
-<div class="card text-center h-100">
-    <div class="card-header">
-        Food Values
-    </div>
-    <div class="card-body">
-        <p class="small">
-            Id: @Model.Food.Id
-        </p>
-        <p class="small">
-            Name: @Model.Food.Name
-        </p>
-        <p class="small">
-            Kcal/100g: @Model.Food.Calories
-        </p>
-        <p class="small">
-            Protein: @Model.Food.Protein g
-        </p>
-        <p class="small">
-            Carbs: @Model.Food.Carbo g
-        </p>
-        <p class="small">
-            Fats: @Model.Food.Fats g
-        </p>
-        <p class="small">
-            Fibers: @Model.Food.Fibers g
-        </p>
-    </div>
+<div class="center-screen">
+    <section class="performance-facts">
+        <header class="performance-facts__header">
+            <h1 class="performance-facts__title">@Model.Food.Name</h1>
+        </header>
+        <table class="performance-facts__table">
+            <thead>
+                <tr>
+                    <th colspan="3" class="small-info">
+                        *Food Info
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="2">
+                        <b>Calories: </b>
+                        @Model.Food.Calories kcal
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <b>Total Fat: </b>
+                        @Model.Food.Fats g
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <b>Total Carbohydrate: </b>
+                        @Model.Food.Carbo g
+                    </th>
+                </tr>
+                <tr>
+                    <td class="blank-cell">
+                    </td>
+                    <th>
+                        Dietary Fiber:
+                        @Model.Food.Fibers g
+                    </th>
+                </tr>
+                <tr class="thick-end">
+                    <th colspan="2">
+                        <b>Protein: </b>
+                        @Model.Food.Protein g
+                    </th>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </div>

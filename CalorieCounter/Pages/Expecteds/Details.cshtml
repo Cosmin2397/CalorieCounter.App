@@ -1,6 +1,7 @@
 ﻿@page
 @model CalorieCounter.Pages.Expecteds.DetailsModel
 
+<div class="center-screen">
 @if(@Model.Expected == null)
 {
     <div style="right: 25px; bottom: 25px; padding-bottom:15px" class="text-white">
@@ -8,33 +9,66 @@
     </div>
 }
 else{
-<div class="card text-center h-100">
-    <div class="card-header">
-        Expected Values
-    </div>
-    <div class="card-body">
-        <p class="small">
-            Id: @Model.Expected.Id
-        </p>
-        <p class="small">
-            Kcal: @Model.Expected.ExpectedKcal
-        </p>
-        <p class="small">
-            Protein: @Model.Expected.ExpectedProtein g
-        </p>
-        <p class="small">
-            Carbs: @Model.Expected.ExpectedCarbs g
-        </p>
-        <p class="small">
-            Fats: @Model.Expected.ExpectedFats g
-        </p>
-        <p class="small">
-            Fibers: @Model.Expected.ExpectedFibers g
-        </p>
-            @if (@User.Identity.IsAuthenticated)
-            {
-                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Expected.Id">Edit</a>
-            }
-    </div>
-</div>
+    <section class="performance-facts">
+        <header class="performance-facts__header">
+            <h1 class="performance-facts__title">Expected</h1>
+        </header>
+        <table class="performance-facts__table">
+            <thead>
+                <tr>
+                    <th colspan="3" class="small-info">
+                        Total Kcal
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="2">
+                        <b>Calories</b>
+                        @Model.Expected.ExpectedKcal kcal
+                    </th>
+                </tr>
+                <tr class="thick-row">
+                    <td colspan="3" class="small-info">
+                        <b>% Daily Value*</b>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <b>Total Fat</b>
+                        @Model.Expected.ExpectedFats g
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <b>Total Carbohydrate</b>
+                        @Model.Expected.ExpectedCarbs g
+                    </th>
+                </tr>
+                <tr>
+                    <td class="blank-cell">
+                    </td>
+                    <th>
+                        Dietary Fiber
+                        @Model.Expected.ExpectedFibers g
+                    </th>
+                </tr>
+                <tr class="thick-end">
+                    <th colspan="2">
+                        <b>Protein</b>
+                        @Model.Expected.ExpectedProtein g
+                    </th>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <div style="padding-top:10px">
+            <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Expected.Id" >Edit</a>
+            </div>
+        }
+    </section>
 }
+</div>
