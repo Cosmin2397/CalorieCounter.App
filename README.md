@@ -3,11 +3,6 @@
 <p align="center"><img src="https://socialify.git.ci/Cosmin2397/CalorieCounter.App/image?language=1&amp;name=1&amp;owner=1&amp;theme=Light" alt="project-image"></p>
 
 <p id="description">CalorieTracker it's a project where you can track your daily calories and macronutriens which use ASP.Net Razor Pages. On this website you can use CRUD operations for Adding Getting Editing and Deleting Foods Food Dashes and Expected calories and macronutrients on a Microsoft SQL Server Database. This project consume and external Api(Edamam Api) which can be used to search for food and has features like Authentification and Authorization.</p>
-
-<h2>🚀 Demo</h2>
-
-[https://caloriecounterapp.azurewebsites.net/](https://caloriecounterapp.azurewebsites.net/)
-
   
   
 <h2>🧐 Features</h2>
